@@ -1,0 +1,75 @@
+.content-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .table-of-contents {
+    color: #333;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .table-of-contents ul li a {
+    display: block;
+    padding: 4px 6px;
+    text-decoration: none;
+    color: #333;
+    border-radius: 5px;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  .table-of-contents ul li a:hover {
+    background: #f8d7da;
+    /* Warna hover */
+    color: #dbb34d;
+    /* Warna teks saat hover */
+  }
+
+  .table-of-contents ul li a.active {
+    background: #dbb34d;
+    /* Warna aktif */
+    color: white;
+  }
+
+
+  .series-list a {
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    color: #333;
+    border-radius: 5px;
+  }
+
+  .series-list a.active {
+    background: #617be9;
+    color: white;
+  }
+
+  .series-list a:hover {
+    background: #e9ecef;
+  }
+
+  .jumbotron img {
+    /* position: relative; */
+    background-size: cover;
+    width: 500px;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    /* border: 1px solid red; */
+    margin-top: 20px;
+}
+
+.jumbotron img::before {
+    content: "";
+    /* position: absolute;
+    top: 0;
+    left: 0; */
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Overlay gelap */
+}
+
