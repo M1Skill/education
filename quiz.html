@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Quiz - M1Skill</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+</head>
+
+<body class="materi-page-page">
+    <header id="header" class="header d-flex align-items-center sticky-top">
+        <div class="container-fluid container-xl position-relative d-flex align-items-center">
+    
+          <a href="index.html" class="logo d-flex align-items-center me-auto">
+            <!-- Uncomment the line below if you also wish to use an image logo -->
+            <img src="assets/img/logo-m1skill.png" alt="">
+            <!-- <h1 class="sitename">M1Skill</h1> -->
+          </a>
+    
+          <nav id="navmenu" class="navmenu">
+            <ul>
+              <li><a href="index.html">Beranda</a></li>
+              <li><a href="panduan.html">Panduan</a></li>
+              <li class="dropdown"><a href="materi.html" ><span>Materi</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="submateri1.html">Literasi Digital</a></li>
+                  <li><a href="submateri2.html">Computational Thinkhing</a></li>
+                  <li><a href="submateri3.html">Algoritma & Pemrograman Dasar</a></li>
+                </ul>
+              </li>
+              <li><a href="evaluasi.html"><span>Evaluasi</span></a></li>
+              <li><a href="playground.html">Playground</a></li>
+              <li><a href="tentang.html">Tentang</a></li>
+            </ul>
+            <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+          </nav>
+        </div>
+    </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title">
+      <div class="container d-lg-flex justify-content-between align-items-center">
+        <h1 class="mb-2 mb-lg-0">Quiz Page</h1>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="current">Quiz Page</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+
+    
+    <html lang="id">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Quiz Game - OOP</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #2c3e50;
+                color: white;
+                text-align: center;
+                margin: 0;
+                padding: 20px;
+            }
+            #quiz-container {
+                max-width: 700px;
+                margin: auto;
+                padding: 20px;
+                background-color: #34495e;
+                border-radius: 10px;
+                padding-bottom: 20px;
+                box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+            }
+            .question {
+                font-size: 1.2em;
+                margin-bottom: 15px;
+            }
+            .option {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                margin: 5px 0;
+                background-color: #3498db;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background 0.3s;
+            }
+            .option:hover {
+                background-color: #2980b9;
+            }
+            .correct {
+                background-color: #2ecc71 !important;
+            }
+            .incorrect {
+                background-color: #e74c3c !important;
+            }
+            .explanation {
+                margin-top: 10px;
+                padding: 10px;
+                background-color: #2c3e50;
+                border-radius: 5px;
+                font-size: 0.9em;
+                color: #bdc3c7;
+            }
+            .result {
+                text-align: left;
+                margin-top: 20px;
+                background-color: #2c3e50;
+                padding: 15px;
+                border-radius: 5px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="quiz-container">
+            <h1>Quiz Game - OOP</h1>
+            <p id="timer">Waktu: 15s</p>
+            <div id="question" class="question"></div>
+            <div id="options"></div>
+            <div id="explanation" class="explanation" style="display: none;"></div>
+        </div>
+    
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                let currentQuestion = 0;
+                let score = 0;
+                let timer;
+                const timeLimit = 15;
+                const userAnswers = [];
+                const questions = [
+                { 
+                    question: "Apa kepanjangan dari OOP?", 
+                    options: ["Object Oriented Programming", "Oriented Object Processing", "Object Operation Protocol", "Object Optimization Process"], 
+                    answer: "Object Oriented Programming",
+                    explanation: "OOP adalah singkatan dari Object Oriented Programming, yaitu paradigma pemrograman berbasis objek."
+                },
+                { 
+                    question: "Apa konsep utama dalam OOP?", 
+                    options: ["Encapsulation, Inheritance, Polymorphism, Abstraction", "Looping, Condition, Function", "Variable, Constant, Array", "Server, Client, API"], 
+                    answer: "Encapsulation, Inheritance, Polymorphism, Abstraction",
+                    explanation: "Konsep utama dalam OOP adalah Encapsulation (pembungkusan data), Inheritance (pewarisan sifat), Polymorphism (banyak bentuk), dan Abstraction (abstraksi data)."
+                },
+                { 
+                    question: "Manakah yang termasuk bahasa pemrograman OOP?", 
+                    options: ["Java", "HTML", "CSS", "SQL"], 
+                    answer: "Java",
+                    explanation: "Java adalah salah satu bahasa pemrograman berbasis OOP yang sangat populer."
+                },
+                { 
+                    question: "Apa itu Encapsulation dalam OOP?", 
+                    options: ["Menyembunyikan detail implementasi dari pengguna", "Menghubungkan dua kelas", "Membuat kode lebih lambat", "Menghapus fungsi dalam class"], 
+                    answer: "Menyembunyikan detail implementasi dari pengguna",
+                    explanation: "Encapsulation bertujuan untuk menyembunyikan detail implementasi dan hanya menampilkan fitur yang diperlukan."
+                },
+                { 
+                    question: "Apa fungsi dari Inheritance dalam OOP?", 
+                    options: ["Memungkinkan suatu kelas mewarisi properti dan metode dari kelas lain", "Menghapus kode duplikat", "Menjalankan fungsi berulang", "Mengubah tampilan program"], 
+                    answer: "Memungkinkan suatu kelas mewarisi properti dan metode dari kelas lain",
+                    explanation: "Inheritance memungkinkan reuse kode dengan mewarisi sifat dari kelas lain."
+                },
+                { 
+                    question: "Apa itu Polymorphism dalam OOP?", 
+                    options: ["Kemampuan objek memiliki banyak bentuk", "Membuat objek berubah warna", "Menghubungkan dua bahasa pemrograman", "Menjalankan fungsi dalam thread yang berbeda"], 
+                    answer: "Kemampuan objek memiliki banyak bentuk",
+                    explanation: "Polymorphism memungkinkan satu metode memiliki implementasi yang berbeda tergantung pada objeknya."
+                },
+                { 
+                    question: "Dalam OOP, apa kegunaan dari keyword 'super'?", 
+                    options: ["Memanggil constructor atau method dari superclass", "Membuat instance dari kelas", "Menjalankan method statis", "Menghapus objek dalam memori"], 
+                    answer: "Memanggil constructor atau method dari superclass",
+                    explanation: "Keyword 'super' digunakan untuk mengakses constructor atau method dari superclass dalam inheritance."
+                },
+                { 
+                    question: "Apa perbedaan antara class dan object dalam OOP?", 
+                    options: ["Class adalah blueprint, object adalah instance dari class", "Object adalah blueprint, class adalah instance dari object", "Class adalah fungsi, object adalah variabel", "Tidak ada perbedaan"], 
+                    answer: "Class adalah blueprint, object adalah instance dari class",
+                    explanation: "Class adalah cetak biru yang mendefinisikan properti dan method, sedangkan object adalah instance nyata dari class tersebut."
+                },
+                { 
+                    question: "Apa tujuan utama dari Abstraction dalam OOP?", 
+                    options: ["Menyembunyikan detail implementasi dan hanya menampilkan fitur yang diperlukan", "Mempercepat eksekusi kode", "Menghubungkan dua bahasa pemrograman", "Membuat kode lebih panjang"], 
+                    answer: "Menyembunyikan detail implementasi dan hanya menampilkan fitur yang diperlukan",
+                    explanation: "Abstraction bertujuan untuk menyederhanakan penggunaan objek dengan menyembunyikan detail yang tidak perlu."
+                },
+                { 
+                    question: "Apa yang dimaksud dengan constructor dalam OOP?", 
+                    options: ["Method khusus yang dipanggil saat objek dibuat", "Method untuk menghapus objek", "Variabel dalam class", "Fungsi yang hanya bisa dipanggil sekali"], 
+                    answer: "Method khusus yang dipanggil saat objek dibuat",
+                    explanation: "Constructor adalah method khusus yang digunakan untuk menginisialisasi objek saat dibuat dari sebuah class."
+                }
+            ];
+            
+    
+                function startTimer() {
+                    let timeLeft = timeLimit;
+                    updateTimer(timeLeft);
+                    timer = setInterval(() => {
+                        timeLeft--;
+                        updateTimer(timeLeft);
+                        if (timeLeft <= 0) {
+                            clearInterval(timer);
+                            nextQuestion();
+                        }
+                    }, 1000);
+                }
+    
+                function updateTimer(time) {
+                    document.getElementById("timer").textContent = `Waktu: ${time}s`;
+                }
+                
+                function loadQuestion() {
+                    document.getElementById("explanation").style.display = "none";
+                    document.getElementById("question").textContent = questions[currentQuestion].question;
+                    const optionsContainer = document.getElementById("options");
+                    optionsContainer.innerHTML = "";
+    
+                    questions[currentQuestion].options.forEach(option => {
+                        const btn = document.createElement("button");
+                        btn.textContent = option;
+                        btn.className = "option";
+                        btn.onclick = () => checkAnswer(btn, option);
+                        optionsContainer.appendChild(btn);
+                    });
+    
+                    startTimer();
+                }
+                
+                function checkAnswer(button, selected) {
+                    clearInterval(timer);
+                    const correct = selected === questions[currentQuestion].answer;
+                
+                    // Simpan jawaban beserta penjelasan ke dalam userAnswers
+                    userAnswers.push({ 
+                        question: questions[currentQuestion].question, 
+                        selected, 
+                        correct, 
+                        explanation: questions[currentQuestion].explanation 
+                    });
+                
+                    button.classList.add(correct ? "correct" : "incorrect");
+                
+                    // Tampilkan penjelasan setelah menjawab
+                    const explanation = document.getElementById("explanation");
+                    explanation.innerHTML = `<p>${questions[currentQuestion].explanation}</p>`;
+                    explanation.style.display = "block";
+                
+                    setTimeout(nextQuestion, 2000);
+                }
+                
+                function nextQuestion() {
+                    currentQuestion++;
+                    if (currentQuestion < questions.length) {
+                        loadQuestion();
+                    } else {
+                        showResults();
+                    }
+                }
+    
+                function showResults() {
+                    const quizContainer = document.getElementById("quiz-container");
+                    let resultHTML = `<h2>Quiz Selesai!</h2><p>Skor Anda: ${userAnswers.filter(a => a.correct).length} / ${questions.length}</p><div class='result'>`;
+                
+                    userAnswers.forEach((ans, index) => {
+                        resultHTML += `<p><strong>${index + 1}. ${ans.question}</strong></p>`;
+                        resultHTML += `<p style='color: ${ans.correct ? "lightgreen" : "salmon"}'>Jawaban Anda: ${ans.selected}</p>`;
+                        resultHTML += `<p style='color: lightblue'>Jawaban benar: ${questions[index].answer}</p>`;
+                        resultHTML += `<p style='color: #bdc3c7'>Penjelasan: ${ans.explanation}</p><hr>`;
+                    });
+                
+                    resultHTML += "</div>";
+                    quizContainer.innerHTML = resultHTML;
+                }
+    
+    
+                loadQuestion();
+            });
+        </script>
+    </body>
+    </html>
+    
+<body class="bg-gray-900 text-white flex items-center justify-center h-screen w-screen">
+    <div id="quiz-container" class="bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-3xl text-left">
+        <h2 id="question" class="text-xl font-bold"></h2>
+        <p id="timer" class="text-yellow-400 font-bold mt-2"></p>
+        <div id="options" class="mt-4"></div>
+    </div>
+</body>
+</main>
+<hr>
+<footer id="footer" class="footer">
+  <div class="container footer-top">
+    <div class="row gy-4">
+      <div class="col-lg-4 col-md-6 footer-about">
+        <a href="index.html" class="d-flex align-items-center">
+          <span class="sitename">M1Skill</span>
+        </a>
+        <div class="footer-contact pt-3">
+          <p>Jl. Kapasan No.73-75</p>
+          <p>Kapasan, Kec. Simokerto, Surabaya, Jawa Timur 60141</p>
+          <p class="mt-3"><i class="bi bi-telephone flex-shrink-0"></i> <span>(031) 3710559</span></p>
+          <p><i class="bi bi-envelope flex-shrink-0"></i> <span>smkm1sby@gmail.com</span></p>
+        </div>
+      </div>
+
+      <div class="col-lg-2 col-md-3 footer-links">
+        <h4>Menu</h4>
+        <ul>
+          <li><i class="bi bi-chevron-right"></i> <a href="index.html">Beranda</a></li>
+          <li><i class="bi bi-chevron-right"></i> <a href="panduan.html">Panduan</a></li>
+          <li><i class="bi bi-chevron-right"></i> <a href="#">Materi</a></li>
+          <li><i class="bi bi-chevron-right"></i> <a href="#">Evaluasi</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-2 col-md-3 footer-links">
+        <h4>Fitur</h4>
+        <ul>
+          <li><i class="bi bi-chevron-right"></i> <a href="#">Akses Materi</a></li>
+        </ul>
+      </div>
+
+      <div class="col-lg-4 col-md-12">
+        <h4>Follow Us</h4>
+        <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
+        <div class="social-links d-flex">
+          <a href=""><i class="bi bi-twitter-x"></i></a>
+          <a href=""><i class="bi bi-facebook"></i></a>
+          <a href=""><i class="bi bi-instagram"></i></a>
+          <a href=""><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container copyright text-center mt-4">
+    <p>© <span>Copyright</span> <strong class="px-1 sitename">M1Skill</strong> <span>All Rights Reserved</span></p>
+  </div>
+
+</footer>
+
+<!-- Scroll Top -->
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Preloader -->
+<div id="preloader"></div>
+
+<!-- Vendor JS Files -->
+<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/vendor/php-email-form/validate.js"></script>
+<script src="assets/vendor/aos/aos.js"></script>
+<script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+<!-- Main JS File -->
+<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
